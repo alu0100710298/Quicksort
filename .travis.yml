@@ -8,14 +8,13 @@ addons:
     token:
       secure: "f4a21e6428f07a58ceb1740e3cd01091ae148e5e"
 
-script: 
-  - sonar-scanner
 jdk:
   - oraclejdk8
 script:
 # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
 #JaCoCo is used to have code coverage, the agent has to be activated
   - mvn clean test org.jacoco:jacoco-maven-plugin:prepare-agent package javadoc:javadoc
+  - sonar-scanner
 cache:
   directories:
     - '$HOME/.m2/repository'
